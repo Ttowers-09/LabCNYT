@@ -58,14 +58,14 @@ El sistema si se le da otro vector Ket debe buscar la probabilidad de transitar 
 - Definimos nuevamente nuestros vectores como Vector / norma del vector  (La norma del vector se puede encontrar con la función propia de Numpy np.linalg.norm(v))
 - Definimos la operación como el producto interno entre el vector al que le encontramos el Bra y el vector de salida"
 
-# Funcion #1 (Retos de programación)
+# Función #1 (Retos de programación)
 El sistema debe calcular la amplitud de transicion, recibiendo dos vectores.
 - Definimos dos vectores.
 - Normalizamos los vectores mediante la función "np.linalg.norm(v4)"
 - A nuestro vector de llegada realizamos el conjugado mediante la funcióm "np.conjugate(np.transpose(v5))" calculando asi el conjugado y el transpuesto.
 - Realizamos producto punto punto entre el vector de llegada calculado anteriormente con el vector de salida V4, luego lo dividimos entre la multiplicación de las normas.
 
-# Funcion #2 (reto de programación)
+# Función #2 (reto de programación)
 El sistema debe verificar que el observable es una matriz hermitiana, esto se realiza mediante la función "np.transpose(np.conjugate(Observable))" si este resultado es igual al observable original continua con el proceso de calcular la media y varianza, si no, se da por terminado.
 - Realizamos producto punto  entre el observable y nuestro ket.
 - A la operación anterior le calculamos la adjunta transpuesta.
@@ -75,14 +75,14 @@ El sistema debe verificar que el observable es una matriz hermitiana, esto se re
 - A nuestro ket original le encontramos el conjugado y la transpuesta y lo multioplicamos con el resultado anterior que es una matriz.
 - A este resultado lo multiplicamos por el ket original y obtendremos la varianza.
 
-# Funcion #3 (reto de programación)
+# Función #3 (reto de programación)
 El programa debe calcular los valores propios y vectores propios del observable; ademas de eso la probabilidad de transición entre los vectores propios despues de la observación.
 - Definimos nuestro observable y el estado inicial.
 - Calculamos los valores propios y vectores propios mediante la funcion "np.linalg.eig(observable)"
 - Normalizamos nuestros vectores propios
 - Para calcular la propabilidad de transicion utilizamos la funcion "np.abs(np.dot(normalizados.T.conj(), estado))**2" -> .T realiza la transpuesta y .conj el conjugado.
 
-# Funciom #4 (reto de programación)
+# Función #4 (reto de programación)
 - Definimos nuestro estado inicial y dos mastrices mas del mismo tamaño.
 - Realizamos el producto punto entre el estado inicial y nuestra primera matriz
 - realizamos el producto punto entre la matriz numero 2 y el resultado obtenido anteriormente.
