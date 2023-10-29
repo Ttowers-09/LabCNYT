@@ -77,10 +77,10 @@ El sistema debe verificar que el observable es una matriz hermitiana, esto se re
 
 # Funcion #3 (reto de programación)
 El programa debe calcular los valores propios y vectores propios del observable; ademas de eso la probabilidad de transición entre los vectores propios despues de la observación.
--Definimos nuestro observable y el estado inicial.
--Calculamos los valores propios y vectores propios mediante la funcion "np.linalg.eig(observable)"
--Normalizamos nuestros vectores propios
--Para calcular la propabilidad de transicion utilizamos la funcion "np.abs(np.dot(normalizados.T.conj(), estado))**2" -> .T realiza la transpuesta y .conj el conjugado.
+- Definimos nuestro observable y el estado inicial.
+- Calculamos los valores propios y vectores propios mediante la funcion "np.linalg.eig(observable)"
+- Normalizamos nuestros vectores propios
+- Para calcular la propabilidad de transicion utilizamos la funcion "np.abs(np.dot(normalizados.T.conj(), estado))**2" -> .T realiza la transpuesta y .conj el conjugado.
 
 # Funciom #4 (reto de programación)
 - Definimos nuestro estado inicial y dos mastrices mas del mismo tamaño.
