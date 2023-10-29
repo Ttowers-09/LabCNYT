@@ -27,7 +27,6 @@ def amplitud_transicion (v4,v5):
     resultf3  = (np.dot(ket_llegada, v4))/ norma1 * norma2
     return resultf3
 
-
 def media_varianza (observable, ket3, identidad):
     hermitiana = np.transpose(np.conjugate(observable))
     if (hermitiana == observable).all():
@@ -51,11 +50,36 @@ def val_vecpropios (observable, estado):
     transicion = np.abs(np.dot(normalizados.T.conj(), estado)) ** 2
     return valores, vectores, transicion
 
-
 def dinamica (estado1,matriz1,matriz2):
     operacion1 = np.dot(matriz1, estado1)
     operacion2 = np.dot(matriz2, operacion1 )
     return operacion2
+
+def exercise411 (U1, U2):
+    if (U1 == np.transpose(np.conjugate(U1))).all():
+        if (U2 == np.transpose(np.conjugate(U2))).all():
+            result1 = U1 * U2
+            result2 = U2 * U1
+            if (result1 == np.transpose(np.conjugate(result1))).all():
+                if (result2 == np.transpose(np.conjugate(result2))).all():
+                    return "Las matrices U1 y U2 son unitarias, el producto entre estas dos tambien es unitario"
+                else:
+                    return "El producto de la matriz U2 * U1 no es unitario"
+            else:
+                return "El producto de la matriz U1 * U2 no es unitario"
+        else:
+            return "La matriz U2 no es unitaria"
+    else:
+        return "La matriz U1 no es unitaria"
+
+
+def exercise422(U3, inicial, clicksU):
+    cont = 0
+    while cont < clicksU:
+        result = np.dot(U3, inicial)
+        inicial = result
+        cont += 1
+    return inicial[3]
 
 
 if __name__ == '__main__':
@@ -65,14 +89,17 @@ if __name__ == '__main__':
     p = 2
     print (probabilidad_position(v1, p))
     print("-"*15)
+
     v2 = np.array ([complex(2,1), complex(-1,2), complex(0,1), complex(1,0),complex(3,-1),complex(2,0),complex(0,-2),complex(-2,1),complex(1,-3),complex(0,-1)])
     v3 = np.array ([complex(-1,-4), complex(2,-3), complex(-7,6), complex(-1,1),complex(-5,-3),complex(5,0),complex(5,8),complex(4,-4),complex(8,-7),complex(2,-7)])
     print (probabilidad_transito (v2, v3))
     print("-" * 15)
+
     v4 = np.array([complex(2, 1), complex(-1, 2), complex(0, 1), complex(1, 0), complex(3, -1), complex(2, 0), complex(0, -2),complex(-2, 1), complex(1, -3), complex(0, -1)])
     v5 = np.array([complex(-1, -4), complex(2, -3), complex(-7, 6), complex(-1, 1), complex(-5, -3), complex(5, 0), complex(5, 8),complex(4, -4), complex(8, -7), complex(2, -7)])
     print(amplitud_transicion (v4,v5))
     print("-" * 15)
+
     observable = np.array([[complex(0, 0), complex(0, -1)], [complex(0, 1), complex(0, 0)]])
     ket3 = np.array([complex(1 / math.sqrt(2), 0), complex(0, 1 / math.sqrt(2))])
     identidad = np.array([[1, 0], [0, 1]])
@@ -80,6 +107,7 @@ if __name__ == '__main__':
     print("Resultado de la media:", operacion3)
     print("Resultado de la varianza:", operacion_final)
     print("-" * 15)
+
     observable = np.array([[complex(0, 0), complex(0, -1)], [complex(0, 1), complex(0, 0)]])
     estado = np.array([complex(1, 0), complex(0, 0)])
     valores, vectores, transicion = val_vecpropios(observable, estado)
@@ -87,8 +115,20 @@ if __name__ == '__main__':
     print("vectores propios:", vectores)
     print("Probabilidad de transición:", transicion)
     print("-" * 15)
+
     estado1 = np.array([complex(1, 0), complex(0, 0)])
     matriz1 = np.array([complex(1, 0), complex(1, 1)])
     matriz2 = np.array([complex(1, 1), complex(1, 0)])
     print (dinamica (estado1,matriz1,matriz2))
-    
+    print("-" * 15)
+
+    U1 = np.array ([(0,1), (1,0)])
+    U2 = np.array ([(math.sqrt(2)/2,math.sqrt(2)/2),(math.sqrt(2)/2,-math.sqrt(2)/2)])
+    print (exercise411 (U1, U2))
+    print("-" * 15)
+
+    U3 =np.array ([(complex(0,0),complex(1/math.sqrt(2),0),complex(1/math.sqrt(2),0),complex(0,0)), (complex(0,1/math.sqrt(2)),complex(0,0),complex(0,0),complex(1/math.sqrt(2),0)),  (complex(1/math.sqrt(2),0),complex(0,0),complex(0,0),complex(0, 1/math.sqrt(2))), (complex(0,0),complex(1/math.sqrt(2),0),complex(-1/math.sqrt(2),0),complex(0,0))])
+    inicial = np.array([1,0,0,0])
+    clicksU = 3
+    resultado = exercise422 (U3, inicial, clicksU)
+    print (f"El chance de encontrar la pelota cuántica en el punto 3 es: {resultado}")
