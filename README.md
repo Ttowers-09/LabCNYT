@@ -75,6 +75,18 @@ El sistema debe verificar que el observable es una matriz hermitiana, esto se re
 - A nuestro ket original le encontramos el conjugado y la transpuesta y lo multioplicamos con el resultado anterior que es una matriz.
 - A este resultado lo multiplicamos por el ket original y obtendremos la varianza.
 
+# Funcion #3 (reto de programación)
+El programa debe calcular los valores propios y vectores propios del observable; ademas de eso la probabilidad de transición entre los vectores propios despues de la observación.
+-Definimos nuestro observable y el estado inicial.
+-Calculamos los valores propios y vectores propios mediante la funcion "np.linalg.eig(observable)"
+-Normalizamos nuestros vectores propios
+-Para calcular la propabilidad de transicion utilizamos la funcion "np.abs(np.dot(normalizados.T.conj(), estado))**2" -> .T realiza la transpuesta y .conj el conjugado.
+
+# Funciom #4 (reto de programación)
+- Definimos nuestro estado inicial y dos mastrices mas del mismo tamaño.
+- Realizamos el producto punto entre el estado inicial y nuestra primera matriz
+- realizamos el producto punto entre la matriz numero 2 y el resultado obtenido anteriormente.
+
 ## Como se deben ejecutar las pruebas.
 Las pruebas se deben ejecetar primero llamando la libreria unitest, a partir de ahi seguimos el procedimiento de llamar 
 nuesta función de la libreria pasada. a partir de ahi definimos nuestras variables a utilizar y el valor que deseamos 
